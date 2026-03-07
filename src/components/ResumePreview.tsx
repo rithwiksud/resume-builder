@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import type { ResumeData } from '../types';
 import './ResumePreview.css';
 
@@ -7,7 +8,7 @@ interface Props {
 
 // Render **bold** and *italic* markdown-like syntax
 function FormattedText({ text }: { text: string }) {
-  const parts: (JSX.Element | string)[] = [];
+  const parts: (ReactNode)[] = [];
   const regex = /(\*\*[^*]+\*\*|\*[^*]+\*)/g;
   let lastIndex = 0;
   let match;

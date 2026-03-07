@@ -10,7 +10,7 @@ export default function App() {
   const [data, setData] = useState<ResumeData>(loadResume);
   const [compiling, setCompiling] = useState(false);
   const [error, setError] = useState('');
-  const saveTimeout = useRef<number>();
+  const saveTimeout = useRef<number>(0);
 
   useEffect(() => {
     clearTimeout(saveTimeout.current);
