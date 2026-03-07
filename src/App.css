@@ -1,0 +1,82 @@
+.app {
+  display: flex;
+  height: 100%;
+  min-height: 100vh;
+}
+
+.panel-left {
+  width: 420px;
+  min-width: 350px;
+  max-width: 500px;
+  overflow-y: auto;
+  border-right: 1px solid #ddd;
+  background: #fafafa;
+  flex-shrink: 0;
+  height: 100vh;
+}
+
+.panel-right {
+  flex: 1;
+  overflow-y: auto;
+  height: 100vh;
+}
+
+.form-actions {
+  padding: 0 20px 20px;
+  position: sticky;
+  bottom: 0;
+  background: #fafafa;
+  border-top: 1px solid #eee;
+  padding-top: 12px;
+}
+
+.btn-download {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  background: #16a34a;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 8px;
+}
+
+.btn-download:hover {
+  background: #15803d;
+}
+
+.btn-pdf {
+  background: #2563eb;
+}
+
+.btn-pdf:hover {
+  background: #1d4ed8;
+}
+
+.btn-pdf:disabled {
+  background: #93b5f5;
+  cursor: wait;
+}
+
+.compile-error {
+  color: #c00;
+  font-size: 12px;
+  margin-top: 6px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+@media print {
+  .panel-left {
+    display: none !important;
+  }
+  .app {
+    display: block;
+  }
+  .panel-right {
+    height: auto;
+    overflow: visible;
+  }
+}
