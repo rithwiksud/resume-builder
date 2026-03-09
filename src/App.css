@@ -30,6 +30,21 @@
   padding-top: 12px;
 }
 
+.filename-input {
+  width: 100%;
+  padding: 8px 10px;
+  font-size: 13px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  box-sizing: border-box;
+}
+
+.filename-input:focus {
+  outline: none;
+  border-color: #16a34a;
+}
+
 .btn-download {
   width: 100%;
   padding: 10px;
@@ -47,17 +62,31 @@
   background: #15803d;
 }
 
-.btn-pdf {
-  background: #2563eb;
-}
-
-.btn-pdf:hover {
-  background: #1d4ed8;
-}
-
-.btn-pdf:disabled {
-  background: #93b5f5;
+.btn-download:disabled {
+  background: #86c49a;
   cursor: wait;
+}
+
+.btn-back {
+  width: 100%;
+  padding: 8px;
+  font-size: 13px;
+  background: none;
+  color: #666;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-back:hover {
+  background: #f0f0f0;
+}
+
+.compile-warning {
+  color: #b45309;
+  font-size: 12px;
+  margin-top: 2px;
+  margin-bottom: 4px;
 }
 
 .compile-error {

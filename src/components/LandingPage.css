@@ -1,0 +1,184 @@
+.landing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #f5f5f0;
+  padding: 20px;
+}
+
+.landing-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+  padding: 48px 40px;
+  max-width: 520px;
+  width: 100%;
+  position: relative;
+}
+
+.landing-back {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: none;
+  border: none;
+  color: #666;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.landing-back:hover {
+  color: #333;
+}
+
+.landing-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0 0 8px;
+  text-align: center;
+}
+
+.landing-subtitle {
+  color: #666;
+  text-align: center;
+  margin: 0 0 32px;
+  font-size: 15px;
+}
+
+.landing-card h2 {
+  font-size: 22px;
+  margin: 0 0 8px;
+  text-align: center;
+}
+
+.landing-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.landing-btn {
+  padding: 12px 32px;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.landing-btn-primary {
+  background: #16a34a;
+  color: white;
+}
+
+.landing-btn-primary:hover {
+  background: #15803d;
+}
+
+.landing-btn-primary:disabled {
+  background: #86c49a;
+  cursor: default;
+}
+
+.landing-btn-secondary {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.landing-btn-secondary:hover {
+  background: #e0e0e0;
+}
+
+.landing-btn-full {
+  width: 100%;
+  margin-top: 12px;
+}
+
+.drop-zone {
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  padding: 32px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  margin-bottom: 12px;
+}
+
+.drop-zone:hover,
+.drop-zone-active {
+  border-color: #16a34a;
+  background: #f0fdf4;
+}
+
+.drop-zone p {
+  margin: 0;
+  color: #888;
+  font-size: 14px;
+}
+
+.landing-or {
+  text-align: center;
+  color: #999;
+  font-size: 13px;
+  margin: 8px 0;
+}
+
+.landing-textarea {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 13px;
+  font-family: monospace;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.landing-textarea:focus {
+  outline: none;
+  border-color: #16a34a;
+}
+
+.prompt-box {
+  background: #f8f8f8;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 12px;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.prompt-text {
+  font-size: 11px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: 0 0 8px;
+  max-height: 200px;
+  overflow-y: auto;
+  line-height: 1.5;
+}
+
+.prompt-copy {
+  padding: 6px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.prompt-copy:hover {
+  background: #1d4ed8;
+}
+
+.landing-error {
+  color: #c00;
+  font-size: 13px;
+  margin-top: 12px;
+  text-align: center;
+}

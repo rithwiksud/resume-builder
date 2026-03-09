@@ -1,4 +1,5 @@
 import type { ResumeData } from '../types';
+import { exportResumeJson } from './json';
 
 function esc(s: string): string {
   // First, protect markdown formatting markers
@@ -128,7 +129,7 @@ export function downloadLatex(data: ResumeData) {
   URL.revokeObjectURL(url);
 }
 
-export async function downloadPdf(data: ResumeData): Promise<void> {
+async function compilePdf(data: ResumeData): Promise<Blob> {
   const tex = generateLatex(data);
   const res = await fetch('/api/compile', {
     method: 'POST',
@@ -141,11 +142,36 @@ export async function downloadPdf(data: ResumeData): Promise<void> {
     throw new Error(err.error || 'Compilation failed');
   }
 
-  const blob = await res.blob();
+  return res.blob();
+}
+
+export async function downloadResumeZip(
+  data: ResumeData,
+  filename: string,
+): Promise<string | null> {
+  const { default: JSZip } = await import('jszip');
+  const zip = new JSZip();
+
+  // Always include .tex and .json
+  zip.file(`${filename}.tex`, generateLatex(data));
+  zip.file(`${filename}.json`, exportResumeJson(data));
+
+  // Try to include PDF; graceful fallback
+  let warning: string | null = null;
+  try {
+    const pdfBlob = await compilePdf(data);
+    zip.file(`${filename}.pdf`, pdfBlob);
+  } catch {
+    warning = 'PDF compilation failed — zip contains .tex and .json only';
+  }
+
+  const blob = await zip.generateAsync({ type: 'blob' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = `${data.name.replace(/\s+/g, '_') || 'resume'}.pdf`;
+  a.download = `${filename}.zip`;
   a.click();
   URL.revokeObjectURL(url);
+
+  return warning;
 }
