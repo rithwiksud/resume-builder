@@ -69,24 +69,27 @@ export default function ResumeForm({ data, onChange }: Props) {
         <h2>Resume Builder</h2>
       </div>
 
-      <fieldset>
-        <legend>Margins (inches)</legend>
-        <div className="margin-grid">
-          {(['top', 'bottom', 'left', 'right'] as const).map((side) => (
-            <div key={side} className="margin-slider">
-              <label>{side}: {data.margins[side].toFixed(2)}in</label>
-              <input
-                type="range"
-                min="0.2"
-                max="1.5"
-                step="0.05"
-                value={data.margins[side]}
-                onChange={(e) => setMargin(side, parseFloat(e.target.value))}
-              />
-            </div>
-          ))}
-        </div>
-      </fieldset>
+      <details className="advanced-settings">
+        <summary>Advanced Settings</summary>
+        <fieldset>
+          <legend>Margins (inches)</legend>
+          <div className="margin-grid">
+            {(['top', 'bottom', 'left', 'right'] as const).map((side) => (
+              <div key={side} className="margin-slider">
+                <label>{side}: {data.margins[side].toFixed(2)}in</label>
+                <input
+                  type="range"
+                  min="0.2"
+                  max="1.5"
+                  step="0.05"
+                  value={data.margins[side]}
+                  onChange={(e) => setMargin(side, parseFloat(e.target.value))}
+                />
+              </div>
+            ))}
+          </div>
+        </fieldset>
+      </details>
 
       <fieldset>
         <legend>Profile</legend>

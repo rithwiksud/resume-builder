@@ -172,6 +172,22 @@
   border: none;
 }
 
+.advanced-settings {
+  margin-bottom: 12px;
+}
+
+.advanced-settings summary {
+  font-size: 13px;
+  font-weight: 600;
+  color: #666;
+  cursor: pointer;
+  padding: 8px 0;
+}
+
+.advanced-settings summary:hover {
+  color: #333;
+}
+
 .format-hint {
   text-align: center;
   font-size: 11px;

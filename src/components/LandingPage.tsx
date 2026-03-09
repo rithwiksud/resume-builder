@@ -110,7 +110,8 @@ export default function LandingPage({ onStart }: Props) {
 
         {step === 'start' && (
           <>
-            <h1 className="landing-title">Resume for Dummies</h1>
+            <div className="landing-emoji">😊</div>
+            <h1 className="landing-title">Résumé for Dummies</h1>
             <div className="landing-buttons">
               <button className="landing-btn landing-btn-primary" onClick={() => onStart(defaultResume())}>
                 Create New
