@@ -130,7 +130,7 @@ export default function LandingPage({ onStart }: Props) {
               <button className="landing-btn landing-btn-primary" onClick={() => setStep('load-json')}>
                 Yes
               </button>
-              <button className="landing-btn landing-btn-secondary" onClick={() => setStep('llm-convert')}>
+              <button className="landing-btn landing-btn-danger" onClick={() => setStep('llm-convert')}>
                 No
               </button>
             </div>

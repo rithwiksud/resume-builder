@@ -92,6 +92,15 @@
   background: #1d4ed8;
 }
 
+.landing-btn-danger {
+  background: #dc2626;
+  color: white;
+}
+
+.landing-btn-danger:hover {
+  background: #b91c1c;
+}
+
 .landing-btn-full {
   width: 100%;
   margin-top: 12px;
