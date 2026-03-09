@@ -1,7 +1,5 @@
-import { useRef } from 'react';
 import type { ResumeData, ResumeSection, ResumeEntry, Margins } from '../types';
 import { createId, emptyEntry, emptySection } from '../types';
-import { parseTexFile } from '../utils/parser';
 import './ResumeForm.css';
 
 interface Props {
@@ -10,7 +8,6 @@ interface Props {
 }
 
 export default function ResumeForm({ data, onChange }: Props) {
-  const fileRef = useRef<HTMLInputElement>(null);
   const set = (patch: Partial<ResumeData>) => onChange({ ...data, ...patch });
 
   const updateSection = (idx: number, patch: Partial<ResumeSection>) => {
@@ -62,19 +59,6 @@ export default function ResumeForm({ data, onChange }: Props) {
     set({ sections });
   };
 
-  const handleUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = (ev) => {
-      const tex = ev.target?.result as string;
-      const parsed = parseTexFile(tex);
-      onChange(parsed);
-    };
-    reader.readAsText(file);
-    e.target.value = '';
-  };
-
   const setMargin = (key: keyof Margins, val: number) => {
     set({ margins: { ...data.margins, [key]: val } });
   };
@@ -83,10 +67,6 @@ export default function ResumeForm({ data, onChange }: Props) {
     <div className="form">
       <div className="form-header">
         <h2>Resume Builder</h2>
-        <button className="btn-upload" onClick={() => fileRef.current?.click()}>
-          Upload .tex
-        </button>
-        <input ref={fileRef} type="file" accept=".tex" style={{ display: 'none' }} onChange={handleUpload} />
       </div>
 
       <fieldset>
@@ -164,7 +144,7 @@ export default function ResumeForm({ data, onChange }: Props) {
             <div key={entry.id} className="entry">
               <div className="row">
                 <input placeholder="Title / Org" value={entry.title} onChange={(e) => updateEntry(sIdx, eIdx, { title: e.target.value })} />
-                <input placeholder="Tech Stack" value={entry.tech} onChange={(e) => updateEntry(sIdx, eIdx, { tech: e.target.value })} />
+                <input placeholder="Highlights" value={entry.tech} onChange={(e) => updateEntry(sIdx, eIdx, { tech: e.target.value })} />
               </div>
               <div className="row">
                 <input placeholder="Role / Subtitle" value={entry.subtitle} onChange={(e) => updateEntry(sIdx, eIdx, { subtitle: e.target.value })} />

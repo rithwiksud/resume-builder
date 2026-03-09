@@ -32,7 +32,7 @@ JSON Schema:
       "entries": [
         {
           "title": "Company or Project Name",
-          "tech": "Technologies Used",
+          "tech": "Key Highlights",
           "location": "City, State",
           "subtitle": "Role or Degree",
           "dates": "Start - End",
@@ -111,7 +111,6 @@ export default function LandingPage({ onStart }: Props) {
         {step === 'start' && (
           <>
             <h1 className="landing-title">Resume For Dummies</h1>
-            <p className="landing-subtitle">Build a clean, professional resume in minutes</p>
             <div className="landing-buttons">
               <button className="landing-btn landing-btn-primary" onClick={() => onStart(defaultResume())}>
                 Create New
@@ -126,7 +125,7 @@ export default function LandingPage({ onStart }: Props) {
         {step === 'existing-source' && (
           <>
             <h2>Made on this website?</h2>
-            <p className="landing-subtitle">If you previously downloaded a .json file from here, choose Yes</p>
+            <p className="landing-subtitle">Did you previously make and download a resume on this site?</p>
             <div className="landing-buttons">
               <button className="landing-btn landing-btn-primary" onClick={() => setStep('load-json')}>
                 Yes
@@ -177,9 +176,11 @@ export default function LandingPage({ onStart }: Props) {
         {step === 'llm-convert' && (
           <>
             <h2>Convert with AI</h2>
-            <p className="landing-subtitle">
-              Copy the prompt below, paste it into ChatGPT / Claude along with your resume, then paste the JSON result back here.
-            </p>
+            <ol className="landing-steps">
+              <li>Drop your existing resume PDF into ChatGPT.</li>
+              <li>Paste the prompt below into ChatGPT.</li>
+              <li>Paste the output in our text box below.</li>
+            </ol>
             <div className="prompt-box">
               <pre className="prompt-text">{LLM_PROMPT}</pre>
               <button className="prompt-copy" onClick={handleCopyPrompt}>
